@@ -41,14 +41,9 @@ You will receive a temporary license key valid for testing.
    - **Frontend UI**: Open [http://localhost](http://localhost) in your browser.
    - **Backend API Docs**: Open [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
 
----
-
 ## 👤 Default Testing Credentials
 
-Once the application starts, you can log in as a **Super Admin** using these credentials:
-
-* **Username/Email**: `contact@thltechnologies.com`
-* **Password**: `THLTech2023#~`
+Once the application is running, you can log in as a **Super Admin**. The default credentials will be sent to you privately along with your **License Activation Key** when you request it.
 
 > [!NOTE]
 > Upon logging in for the first time, you will be guided through the **Initial Setup Wizard** to configure your enterprise branding, theme colors, and basic business rules.
