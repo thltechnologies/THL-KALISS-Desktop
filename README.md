@@ -8,11 +8,14 @@ Welcome to the public testing repository for **THL-KALIX**! This project provide
 
 To run the application, choose one of the options below:
 
-### Option 1: Standalone JAR (Easiest)
+### Option 1: Native Desktop Installer (Recommended - Zero-Configuration)
+- **None!** The desktop installer bundles everything automatically (embedded database, JRE, and frontend). Simply download and run.
+
+### Option 2: Standalone JAR
 - **Java Runtime Environment (JRE) 17** or higher installed on your machine.
 - A running **PostgreSQL** database (version 15 or higher).
 
-### Option 2: Docker Compose (Alternative)
+### Option 3: Docker Compose (Alternative)
 - [Docker](https://www.docker.com/products/docker-desktop/) (v20.10 or higher)
 - [Docker Compose](https://docs.docker.com/compose/install/) (v2.0 or higher)
 
@@ -33,7 +36,20 @@ You will receive a temporary license key valid for testing.
 
 ## 🚀 Quick Start
 
-### Method 1: Run via Standalone JAR (Recommended)
+### Method 1: Install via Native Desktop Installer (Recommended)
+
+1. **Download the installer**:
+   Download the installer for your platform (`THL-KALIX-Setup.exe` for Windows or `THL-KALIX.dmg` for macOS) from our releases page or server.
+2. **Install and Launch**:
+   Double-click the downloaded file and follow the standard installation prompts.
+3. **Activation Key**:
+   Set the `KALIX_LICENSE_KEY` environment variable on your system, or follow the onscreen activation prompts.
+4. **Usage**:
+   The desktop app will automatically spin up its own database and launch the core banking interface.
+
+---
+
+### Method 2: Run via Standalone JAR
 
 1. **Download the executable JAR**:
    [Download corebanking-testing.jar](https://github.com/thltechnologies/THL-KALIX/releases) (or download it from your server/release page).
@@ -64,7 +80,7 @@ You will receive a temporary license key valid for testing.
 
 ---
 
-### Method 2: Run via Docker Compose
+### Method 3: Run via Docker Compose
 
 1. **Clone this repository** (or copy `docker-compose.yml` and the `init-db` directory).
 2. **Set your Activation Key** in your shell or directly inside a `.env` file in the same folder as `docker-compose.yml`:
