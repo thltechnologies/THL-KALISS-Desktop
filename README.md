@@ -6,7 +6,13 @@ Welcome to the public testing repository for **THL-KALIX**! This project provide
 
 ## 📋 Prerequisites
 
-To run this environment, you need to have the following installed on your machine:
+To run the application, choose one of the options below:
+
+### Option 1: Standalone JAR (Easiest)
+- **Java Runtime Environment (JRE) 17** or higher installed on your machine.
+- A running **PostgreSQL** database (version 15 or higher).
+
+### Option 2: Docker Compose (Alternative)
 - [Docker](https://www.docker.com/products/docker-desktop/) (v20.10 or higher)
 - [Docker Compose](https://docs.docker.com/compose/install/) (v2.0 or higher)
 
@@ -27,9 +33,41 @@ You will receive a temporary license key valid for testing.
 
 ## 🚀 Quick Start
 
+### Method 1: Run via Standalone JAR (Recommended)
+
+1. **Download the executable JAR**:
+   [Download corebanking-testing.jar](https://github.com/thltechnologies/THL-KALIX/releases) (or download it from your server/release page).
+2. **Configure your database**:
+   Create a database named `corebanking` in your PostgreSQL instance.
+3. **Run the application**:
+   Set the required environment variables in your command terminal and start the JAR:
+   
+   **Windows (Command Prompt)**:
+   ```cmd
+   set KALIX_LICENSE_KEY=your_received_jwt_activation_key_here
+   set SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/corebanking
+   set SPRING_DATASOURCE_USERNAME=your_db_username
+   set SPRING_DATASOURCE_PASSWORD=your_db_password
+   java -jar corebanking-testing.jar
+   ```
+
+   **Linux / macOS (Bash)**:
+   ```bash
+   export KALIX_LICENSE_KEY="your_received_jwt_activation_key_here"
+   export SPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/corebanking"
+   export SPRING_DATASOURCE_USERNAME="your_db_username"
+   export SPRING_DATASOURCE_PASSWORD="your_db_password"
+   java -jar corebanking-testing.jar
+   ```
+4. **Access the application**:
+   Open [http://localhost:8080](http://localhost:8080) in your browser.
+
+---
+
+### Method 2: Run via Docker Compose
+
 1. **Clone this repository** (or copy `docker-compose.yml` and the `init-db` directory).
-2. **Set your Activation Key** in your shell or directly inside the `.env` file:
-   Create a `.env` file in the same folder as `docker-compose.yml` and add your key:
+2. **Set your Activation Key** in your shell or directly inside a `.env` file in the same folder as `docker-compose.yml`:
    ```env
    KALIX_LICENSE_KEY=your_received_jwt_activation_key_here
    ```
@@ -41,6 +79,8 @@ You will receive a temporary license key valid for testing.
    - **Frontend UI**: Open [http://localhost](http://localhost) in your browser.
    - **Backend API Docs**: Open [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
 
+---
+
 ## 👤 Default Testing Credentials
 
 Once the application is running, you can log in as a **Super Admin**. The default credentials will be sent to you privately along with your **License Activation Key** when you request it.
@@ -50,7 +90,7 @@ Once the application is running, you can log in as a **Super Admin**. The defaul
 
 ---
 
-## 🔧 Configuration Customization
+## 🔧 Configuration Customization (For Docker Compose)
 
 If you need to change ports or database settings, customize the environment variables in your `.env` file or modify `docker-compose.yml`:
 

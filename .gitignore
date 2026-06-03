@@ -1,0 +1,12 @@
+# Exclude large binaries
+*.jar
+*.war
+
+# Exclude credentials and secrets
+*.pem
+*.key
+.env
+
+# OS-specific files
+.DS_Store
+Thumbs.db
