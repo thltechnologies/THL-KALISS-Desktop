@@ -2,6 +2,8 @@ name: Build macOS DMG
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*' # Trigger build when pushing tags like v1.0.0, v1.0.1, etc.
 
