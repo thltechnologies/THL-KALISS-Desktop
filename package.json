@@ -1,0 +1,33 @@
+{
+  "name": "thl-kalix",
+  "version": "1.0.0",
+  "description": "THL-KALIX Core Banking Desktop Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.thltechnologies.kalix",
+    "productName": "THL-KALIX",
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "extraResources": [
+      "corebanking-testing.jar"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    }
+  }
+}

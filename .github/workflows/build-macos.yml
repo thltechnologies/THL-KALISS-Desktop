@@ -1,0 +1,53 @@
+name: Build macOS DMG
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger build when pushing tags like v1.0.0, v1.0.1, etc.
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      # 1. Checkout the Electron code (this repository)
+      - name: Checkout Electron Code
+        uses: actions/checkout@v4
+
+      # 2. Checkout the Java Backend repository
+      - name: Checkout Backend Code
+        uses: actions/checkout@v4
+        with:
+          repository: thltechnologies/Core-Banking-Backend
+          path: Core-Banking-Backend
+          # If Core-Banking-Backend is private, ensure you define a secret PAT_TOKEN in THL-KALIX repository settings.
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Build Java Backend JAR
+        run: |
+          cd Core-Banking-Backend
+          chmod +x mvnw
+          ./mvnw clean package -DskipTests
+          cp target/corebanking-0.0.1-SNAPSHOT.jar ../corebanking-testing.jar
+
+      - name: Build Electron App (macOS DMG)
+        run: |
+          npm install
+          npx electron-builder --mac dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
