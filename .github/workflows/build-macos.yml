@@ -23,6 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: thltechnologies/Core-Banking-Backend
+          ref: 1200-setup-tests-environnement-for-users-and-clients
           path: Core-Banking-Backend
           # If Core-Banking-Backend is private, ensure you define a secret PAT_TOKEN in THL-KALIX repository settings.
           token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
