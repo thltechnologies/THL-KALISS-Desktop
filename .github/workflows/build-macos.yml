@@ -25,7 +25,15 @@ jobs:
           repository: thltechnologies/Core-Banking-Backend
           ref: 1200-setup-tests-environnement-for-users-and-clients
           path: Core-Banking-Backend
-          # If Core-Banking-Backend is private, ensure you define a secret PAT_TOKEN in THL-KALIX repository settings.
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+
+      # 2b. Checkout the Angular Dashboard repository
+      - name: Checkout Dashboard Code
+        uses: actions/checkout@v4
+        with:
+          repository: thltechnologies/Core-Banking-Dashboard-Angular
+          ref: 997-setup-tests-environnement-for-users-and-clients
+          path: Core-Banking-Dashboard-Angular
           token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
@@ -34,6 +42,18 @@ jobs:
           node-version: 20
           cache: 'npm'
           cache-dependency-path: package-lock.json
+
+      - name: Build Angular Dashboard
+        run: |
+          cd Core-Banking-Dashboard-Angular
+          npm install
+          npm run build
+
+      - name: Copy Dashboard Build to Backend Static Resources
+        run: |
+          rm -rf Core-Banking-Backend/src/main/resources/static/*
+          mkdir -p Core-Banking-Backend/src/main/resources/static
+          cp -r Core-Banking-Dashboard-Angular/dist/corebanking-ng/* Core-Banking-Backend/src/main/resources/static/
 
       - name: Install Java
         uses: actions/setup-java@v4
