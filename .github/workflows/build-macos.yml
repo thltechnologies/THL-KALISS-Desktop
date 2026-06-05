@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: thltechnologies/Core-Banking-Backend
-          ref: 1200-setup-tests-environnement-for-users-and-clients
+          ref: test
           path: Core-Banking-Backend
           token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
 
@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: thltechnologies/Core-Banking-Dashboard-Angular
-          ref: 997-setup-tests-environnement-for-users-and-clients
+          ref: test
           path: Core-Banking-Dashboard-Angular
           token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
 
