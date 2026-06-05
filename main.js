@@ -72,7 +72,7 @@ function startBackend() {
 
     // Spawn the Spring Boot backend
     const cwdPath = app.isPackaged ? process.resourcesPath : __dirname;
-    backendProcess = spawn(javaBin, ['-jar', jarPath], {
+    backendProcess = spawn(javaBin, ['-Dspring.profiles.active=test', '-jar', jarPath], {
         cwd: cwdPath,
         env: envCopy
     });
