@@ -79,5 +79,5 @@ jobs:
       - name: Upload macOS DMG Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: THL-KALIX-1.0.0
+          name: THL-KALISS-1.0.0
           path: dist/*.dmg  # Récupère tous les fichiers .dmg générés dans le dossier de build par défaut

@@ -48,7 +48,7 @@ function startBackend() {
     console.log(`Starting backend JAR: ${jarPath}`);
 
     // Read license key from environment variable or local license.key file
-    let licenseKey = process.env.KALIX_LICENSE_KEY || '';
+    let licenseKey = process.env.KALISS_LICENSE_KEY || '';
     const licenseFilePath = app.isPackaged
         ? path.join(path.dirname(process.execPath), 'license.key')
         : path.join(__dirname, 'license.key');
@@ -68,7 +68,7 @@ function startBackend() {
 
     // Set up environment with custom properties
     const envCopy = { ...process.env };
-    envCopy.KALIX_LICENSE_KEY = licenseKey;
+    envCopy.KALISS_LICENSE_KEY = licenseKey;
 
     // Spawn the Spring Boot backend
     const cwdPath = app.isPackaged ? process.resourcesPath : __dirname;
@@ -139,7 +139,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1280,
         height: 800,
-        title: 'THL-KALIX Core Banking',
+        title: 'THL-KALISS Core Banking',
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true

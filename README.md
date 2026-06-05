@@ -1,6 +1,6 @@
-# 🏦 THL-KALIX - Public Testing Instance
+# 🏦 THL-KALISS - Public Testing Instance
 
-Welcome to the public testing repository for **THL-KALIX**! This project provides a plug-and-play Docker Compose environment to quickly evaluate the Multi-Client Core Banking System.
+Welcome to the public testing repository for **THL-KALISS**! This project provides a plug-and-play Docker Compose environment to quickly evaluate the Multi-Client Core Banking System.
 
 ---
 
@@ -17,7 +17,7 @@ To run the application, choose one of the options below:
 
 ### Option 3: Docker Compose (Alternative)
 - [Docker](https://www.docker.com/products/docker-desktop/) (v20.10 or higher)
-- [Docker Compose](https://docs.docker.com/compose/install/) (v2.0 or higher)
+- [Docker Compose](https://docs.google.com/docker-compose/install/) (v2.0 or higher)
 
 ---
 
@@ -26,7 +26,7 @@ To run the application, choose one of the options below:
 To run the application, you must provide a valid **Activation Key**. The application will not start without one.
 
 ### How to request a key:
-Send an email to **contact@thltechnologies.com** with the subject **"THL-KALIX Public Testing Key Request"**. Please include:
+Send an email to **contact@thltechnologies.com** with the subject **"THL-KALISS Public Testing Key Request"**. Please include:
 - Your name/organization.
 - The purpose of your test.
 
@@ -39,11 +39,11 @@ You will receive a temporary license key valid for testing.
 ### Method 1: Install via Native Desktop Installer (Recommended)
 
 1. **Download the installer**:
-   Download the installer for your platform (`THL-KALIX-Setup.exe` for Windows or `THL-KALIX.dmg` for macOS) from our releases page or server.
+   Download the installer for your platform (`THL-KALISS-Setup.exe` for Windows or `THL-KALISS.dmg` for macOS) from our releases page or server.
 2. **Install and Launch**:
    Double-click the downloaded file and follow the standard installation prompts.
 3. **Activation Key**:
-   Set the `KALIX_LICENSE_KEY` environment variable on your system, or follow the onscreen activation prompts.
+   Set the `KALISS_LICENSE_KEY` environment variable on your system, or follow the onscreen activation prompts.
 4. **Usage**:
    The desktop app will automatically spin up its own database and launch the core banking interface.
 
@@ -52,7 +52,7 @@ You will receive a temporary license key valid for testing.
 ### Method 2: Run via Standalone JAR
 
 1. **Download the executable JAR**:
-   [Download corebanking-testing.jar](https://github.com/thltechnologies/THL-KALIX/releases) (or download it from your server/release page).
+   [Download corebanking-testing.jar](https://github.com/thltechnologies/THL-KALISS/releases) (or download it from your server/release page).
 2. **Configure your database**:
    Create a database named `corebanking` in your PostgreSQL instance.
 3. **Run the application**:
@@ -60,7 +60,7 @@ You will receive a temporary license key valid for testing.
    
    **Windows (Command Prompt)**:
    ```cmd
-   set KALIX_LICENSE_KEY=your_received_jwt_activation_key_here
+   set KALISS_LICENSE_KEY=your_received_jwt_activation_key_here
    set SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/corebanking
    set SPRING_DATASOURCE_USERNAME=your_db_username
    set SPRING_DATASOURCE_PASSWORD=your_db_password
@@ -69,7 +69,7 @@ You will receive a temporary license key valid for testing.
 
    **Linux / macOS (Bash)**:
    ```bash
-   export KALIX_LICENSE_KEY="your_received_jwt_activation_key_here"
+   export KALISS_LICENSE_KEY="your_received_jwt_activation_key_here"
    export SPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/corebanking"
    export SPRING_DATASOURCE_USERNAME="your_db_username"
    export SPRING_DATASOURCE_PASSWORD="your_db_password"
@@ -85,7 +85,7 @@ You will receive a temporary license key valid for testing.
 1. **Clone this repository** (or copy `docker-compose.yml` and the `init-db` directory).
 2. **Set your Activation Key** in your shell or directly inside a `.env` file in the same folder as `docker-compose.yml`:
    ```env
-   KALIX_LICENSE_KEY=your_received_jwt_activation_key_here
+   KALISS_LICENSE_KEY=your_received_jwt_activation_key_here
    ```
 3. **Start the stack**:
    ```bash

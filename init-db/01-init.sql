@@ -1,4 +1,4 @@
--- Initial Database Initialization script for THL-KALIX
+-- Initial Database Initialization script for THL-KALISS
 -- PostgreSQL automatically runs script files located in /docker-entrypoint-initdb.d in alphabetical order.
 -- Note: Spring Boot (via Flyway) automatically handles creation and migration of application schemas.
 

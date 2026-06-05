@@ -3,7 +3,7 @@ version: "3.9"
 services:
   db:
     image: postgres:15-alpine
-    container_name: kalix-db
+    container_name: kaliss-db
     environment:
       - POSTGRES_DB=corebanking
       - POSTGRES_USER=corebanking
@@ -14,7 +14,7 @@ services:
       - pgdata:/var/lib/postgresql/data
       - ./init-db:/docker-entrypoint-initdb.d
     networks:
-      - kalix-net
+      - kaliss-net
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U corebanking -d corebanking"]
       interval: 10s
@@ -22,8 +22,8 @@ services:
       retries: 5
 
   backend:
-    image: ibrahimkelly/kalix-backend:latest
-    container_name: kalix-backend
+    image: ibrahimkelly/kaliss-backend:latest
+    container_name: kaliss-backend
     ports:
       - "8080:8080"
     environment:
@@ -31,26 +31,26 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/corebanking
       - SPRING_DATASOURCE_USERNAME=corebanking
       - SPRING_DATASOURCE_PASSWORD=corebanking
-      - KALIX_LICENSE_KEY=${KALIX_LICENSE_KEY}
+      - KALISS_LICENSE_KEY=${KALISS_LICENSE_KEY}
     depends_on:
       db:
         condition: service_healthy
     networks:
-      - kalix-net
+      - kaliss-net
 
   frontend:
-    image: ibrahimkelly/kalix-frontend:latest
-    container_name: kalix-frontend
+    image: ibrahimkelly/kaliss-frontend:latest
+    container_name: kaliss-frontend
     ports:
       - "80:80"
     depends_on:
       - backend
     networks:
-      - kalix-net
+      - kaliss-net
 
 volumes:
   pgdata:
 
 networks:
-  kalix-net:
+  kaliss-net:
     driver: bridge
